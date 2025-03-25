@@ -1,3 +1,5 @@
+@model List<Ecommerce.Models.Produto>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +8,14 @@
     <title>Document</title>
 </head>
 <body>
-    Produtos HTML
+    <table border="1">
+        @foreach(var produto in Model)
+        {
+            <tr>
+                <td>@produto.ProdutoId</td>
+                <td>@produto.Nome</td>
+            </tr>
+        }
+    </table>
 </body>
 </html>
