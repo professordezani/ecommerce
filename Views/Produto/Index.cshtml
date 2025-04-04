@@ -1,21 +1,31 @@
-@model List<Ecommerce.Models.Produto>
+@model IEnumerable<Ecommerce.Models.Produto>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <table border="1">
-        @foreach(var produto in Model)
-        {
-            <tr>
-                <td>@produto.ProdutoId</td>
-                <td>@produto.Nome</td>
-            </tr>
-        }
-    </table>
-</body>
-</html>
+@{
+    Layout="~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="product spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="row">
+                    @foreach(var produto in Model)
+                    {
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="product__item">                            
+                            <a href="/Produto/Detalhes/@produto.ProdutoId">
+                                <div class="product__item__pic set-bg" data-setbg="/img/product/@(produto.Imagem)">
+                                </div>
+                            </a>                            
+                            <div class="product__item__text">
+                                <h6><a href="#">@produto.Nome</a></h6>
+                                <h5>@produto.Preco.ToString("c")</h5>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

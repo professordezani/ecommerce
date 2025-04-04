@@ -9,10 +9,15 @@ public class ProdutoController : Controller
     {
         // No futuro, conectaremos com o BD
         List<Produto> produtos = new List<Produto>();
-        produtos.Add(new Produto { ProdutoId = 1, Nome = "Banana" });
-        produtos.Add(new Produto { ProdutoId = 2, Nome = "Cenoura" });
-        produtos.Add(new Produto { ProdutoId = 3, Nome = "Abacate" });
+        produtos.Add(new Produto { ProdutoId = 1, Nome = "Manga", Imagem="manga.jpg", Preco = 10 });
+        produtos.Add(new Produto { ProdutoId = 2, Nome = "Banana", Imagem="banana.jpg", Preco = 5});
+        produtos.Add(new Produto { ProdutoId = 3, Nome = "Goiaba", Imagem="goiaba.jpg", Preco = 18 });
 
         return View(produtos); // Views/Produto/Index.cshtml
+    }
+
+    public ActionResult Detalhes(int id)
+    {
+        return View();
     }
 }
