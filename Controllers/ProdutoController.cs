@@ -1,3 +1,4 @@
+using Ecommerce.Data;
 using Ecommerce.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -5,30 +6,24 @@ namespace Ecommerce.Controllers;
 
 public class ProdutoController : Controller
 {
-    // atributos:
-    List<Produto> produtos = new List<Produto>();
+    private DbEcommerce db;
 
-    public ProdutoController()
+    public ProdutoController(DbEcommerce db)
     {
-        produtos.Add(new Produto { ProdutoId = 1, Nome = "Manga", Imagem="manga.jpg", Preco = 10 });
-        produtos.Add(new Produto { ProdutoId = 2, Nome = "Banana", Imagem="banana.jpg", Preco = 5});
-        produtos.Add(new Produto { ProdutoId = 3, Nome = "Goiaba", Imagem="goiaba.jpg", Preco = 18 });
+        this.db = db;
     }
 
     public ActionResult Index()
     {
-        return View(produtos); // Views/Produto/Index.cshtml
+        return View(db.Produtos.ToList()); // Views/Produto/Index.cshtml
     }
 
     public ActionResult Detalhes(int id)
     {
-        foreach(var produto in produtos)
-        {
-            if(produto.ProdutoId == id) {
-                return View(produto);
-            }
-        }
+        // SELECT * FROM Produtos WHERE ProdutoId = id
+        // Produto produto = db.Produtos.Where(p => p.ProdutoId == id).First();
+        Produto produto = db.Produtos.SingleOrDefault(p => p.ProdutoId == id);
 
-        return NotFound();
+        return View(produto);
     }
 }
