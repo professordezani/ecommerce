@@ -6,8 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 // builder.Services.AddDbContext<DbEcommerce>(options =>
 //     options.UseInMemoryDatabase("InMemoryDb"));
+// builder.Services.AddDbContext<DbEcommerce>(options =>
+//     options.UseSqlite("Data Source=ecommerce.db"));
 builder.Services.AddDbContext<DbEcommerce>(options =>
-    options.UseSqlite("Data Source=ecommerce.db"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("default")));
 
 var app = builder.Build();
 
