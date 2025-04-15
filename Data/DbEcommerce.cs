@@ -8,6 +8,9 @@ public class DbEcommerce : DbContext
     public DbEcommerce(DbContextOptions options) : base(options) {}     
 
     public DbSet<Produto> Produtos { get; set; }
+    public DbSet<Cliente> Clientes { get; set; }
+    public DbSet<ItemPedido> ItemPedidos { get; set; }
+    public DbSet<Pedido> Pedidos { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -23,5 +26,7 @@ public class DbEcommerce : DbContext
             new Produto { ProdutoId = 6, Nome = "Melancia", Imagem="melancia.jpg", Preco = 15.0M },
             new Produto { ProdutoId = 7, Nome = "Uva", Imagem="uva.jpg", Preco = 20.0M }
         );
+
+        modelBuilder.Entity<ItemPedido>().HasNoKey();
     }
 }
