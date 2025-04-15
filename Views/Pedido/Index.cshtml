@@ -1,3 +1,6 @@
+@using Ecommerce.Models
+@model Dictionary<int, ItemPedido>
+
 @{
     Layout="~/Views/Shared/_Layout.cshtml";
 }
@@ -18,78 +21,33 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach(KeyValuePair<int, ItemPedido> item in Model)
+                                {
                                 <tr>
                                     <td class="shoping__cart__item">
                                         <img src="/img/cart/cart-1.jpg" alt="">
-                                        <h5>Vegetable’s Package</h5>
+                                        <h5>@item.Value.Produto.Nome</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        $55.00
+                                        @item.Value.Preco.ToString("c")
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
                                             <div class="pro-qty">
                                                 <a href="#"><i class="fa fa-minus" style="color: black"></i></a>
-                                                <input type="text" readonly value="1">
+                                                <input type="text" readonly value="@item.Value.Quantidade">
                                                 <a href="#"><i class="fa fa-plus" style="color: black"></i></a>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                        $110.00
+                                        R$ ???
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <a href="#" class="fa fa-close" style="color:red"></a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="/img/cart/cart-2.jpg" alt="">
-                                        <h5>Fresh Garden Vegetable</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $39.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <a href="#"><i class="fa fa-minus" style="color: black"></i></a>
-                                                <input type="text" readonly value="1">
-                                                <a href="#"><i class="fa fa-plus" style="color: black"></i></a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $39.99
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <a href="#" class="fa fa-close" style="color:red"></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="/img/cart/cart-3.jpg" alt="">
-                                        <h5>Organic Bananas</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $69.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <a href="#"><i class="fa fa-minus" style="color: black"></i></a>
-                                                <input type="text" readonly value="1">
-                                                <a href="#"><i class="fa fa-plus" style="color: black"></i></a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $69.99
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <a href="#" class="fa fa-close" style="color:red"></a>
-                                    </td>
-                                </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
