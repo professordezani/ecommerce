@@ -25,7 +25,7 @@
                                 {
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="/img/cart/cart-1.jpg" alt="">
+                                        <img src="/img/product/@(item.Value.Produto.Imagem)" alt="" width="80" height="80">
                                         <h5>@item.Value.Produto.Nome</h5>
                                     </td>
                                     <td class="shoping__cart__price">
@@ -56,8 +56,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="/Product/Index" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                        <a href="/Customer/Create" class="primary-btn cart-btn cart-btn-right">PROCEED TO CHECKOUT</a>
+                        <a href="/Produto/Index" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                        <a href="/Cliente/Create" class="primary-btn cart-btn cart-btn-right">PROCEED TO CHECKOUT</a>
                     </div>
                 </div>
             </div>

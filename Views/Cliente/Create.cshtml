@@ -5,64 +5,22 @@
 <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                @* <h4>Checkout</h4> *@
-                <form action="#">
+                <form action="/Cliente/Create" method="POST">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <h4>Customer Register</h4>
                             
                             <div class="checkout__input">
                                 <p>Nome<span>*</span></p>
-                                <input type="text">
+                                <input type="text" name="Nome">
                             </div> 
                             <div class="checkout__input">
-                                <p>Telefone<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
                                 <p>E-mail<span>*</span></p>
-                                <input type="text">
+                                <input type="email" name="Email">
                             </div>
                             <div class="checkout__input">
                                 <p>Password<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-10">
-                                    <div class="checkout__input">
-                                        <p>CEP<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-2">
-                                    <div class="checkout__input" style="float:inline-end">
-                                        <p>&nbsp;</p>
-                                        <button type="button" class="site-btn">PESQUISAR</button>
-                                     </div>
-                                </div>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Endereço<span>*</span></p>
-                                <input type="text" readonly placeholder="Street Address" class="checkout__input__add">
-                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Cidade<span>*</span></p>
-                                <input type="text" readonly>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Estado<span>*</span></p>
-                                        <input type="text" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>País<span>*</span></p>
-                                        <input type="text" readonly>
-                                    </div>
-                                </div>
+                                <input type="password" name="Senha">
                             </div>
                             
                         </div>                       

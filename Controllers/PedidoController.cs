@@ -16,16 +16,12 @@ public class PedidoController : Controller
 
     public ActionResult Index()
     {
-        Dictionary<int, ItemPedido> carrinho;
-
         String? carrinho_json = HttpContext.Session.GetString("carrinho");
 
-        if (carrinho_json == null)
+        if (string.IsNullOrEmpty(carrinho_json))
             return RedirectToAction("Index", "Produto");
-        
-        carrinho = JsonSerializer.Deserialize<Dictionary<int, ItemPedido>>(carrinho_json);
 
-        return View(carrinho);
+        return View(JsonSerializer.Deserialize<Dictionary<int, ItemPedido>>(carrinho_json));
     }
 
     public ActionResult Update(int id) 
