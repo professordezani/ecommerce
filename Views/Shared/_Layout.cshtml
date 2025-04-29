@@ -31,13 +31,16 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
+                    @if(Context.Session.GetInt32("quantidade") > 0)
+                    {
                     <div class="header__cart">
                         <ul>
                             @* <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li> *@
-                            <li><a href="/Order/Index"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="/Pedido/Index"><i class="fa fa-shopping-bag"></i> <span>@Context.Session.GetInt32("quantidade")</span></a></li>
                         </ul>
-                        <div class="header__cart__price"><span>R$ 150,00</span></div>
+                        <div class="header__cart__price"><span>@Context.Session.GetString("total")</span></div>
                     </div>
+                    }
                 </div>
             </div>
             @* <div class="humberger__open">

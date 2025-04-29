@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor();
 // builder.Services.AddDbContext<DbEcommerce>(options =>
 //     options.UseInMemoryDatabase("InMemoryDb"));
 // builder.Services.AddDbContext<DbEcommerce>(options =>

@@ -44,8 +44,11 @@ public class PedidoController : Controller
 
     private void Save(Dictionary<int, ItemPedido> carrinho) 
     {
+        var session = HttpContext.Session;
         string dados = JsonSerializer.Serialize(carrinho);
-        HttpContext.Session.SetString("carrinho", dados);
+        session.SetString("carrinho", dados);
+        session.SetInt32("quantidade", carrinho.Values.Sum(i => i.Quantidade));
+        session.SetString("total", carrinho.Values.Sum(i => i.Total).ToString("c"));
     }
 
     public ActionResult Update(int id) 
