@@ -34,17 +34,17 @@
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
                                             <div class="pro-qty">
-                                                <a href="#"><i class="fa fa-minus" style="color: black"></i></a>
+                                                <a href="/Pedido/UpdateQuantidade/@item.Key?operacao=decrementar"><i class="fa fa-minus" style="color: black"></i></a>
                                                 <input type="text" readonly value="@item.Value.Quantidade">
-                                                <a href="#"><i class="fa fa-plus" style="color: black"></i></a>
+                                                <a href="/Pedido/UpdateQuantidade/@item.Key?operacao=incrementar"><i class="fa fa-plus" style="color: black"></i></a>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                        R$ ???
+                                        @item.Value.Total.ToString("c")
                                     </td>
                                     <td class="shoping__cart__item__close">
-                                        <a href="#" class="fa fa-close" style="color:red"></a>
+                                        <a href="/Pedido/Delete/@item.Key" class="fa fa-close" style="color:red"></a>
                                     </td>
                                 </tr>
                                 }

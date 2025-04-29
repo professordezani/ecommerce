@@ -24,7 +24,7 @@ public class PedidoController : Controller
         return View(JsonSerializer.Deserialize<Dictionary<int, ItemPedido>>(carrinho_json));
     }
 
-    public ActionResult Update(int id) 
+    private Dictionary<int, ItemPedido> Load() 
     {
         Dictionary<int, ItemPedido> carrinho;
 
@@ -37,7 +37,20 @@ public class PedidoController : Controller
         else
         {
             carrinho = JsonSerializer.Deserialize<Dictionary<int, ItemPedido>>(carrinho_json);
-        }        
+        }   
+
+        return carrinho;
+    }
+
+    private void Save(Dictionary<int, ItemPedido> carrinho) 
+    {
+        string dados = JsonSerializer.Serialize(carrinho);
+        HttpContext.Session.SetString("carrinho", dados);
+    }
+
+    public ActionResult Update(int id) 
+    {
+        var carrinho = Load();
         
         if(carrinho.ContainsKey(id))
         {
@@ -55,7 +68,49 @@ public class PedidoController : Controller
             carrinho.Add(id, item);
         }        
 
-        HttpContext.Session.SetString("carrinho", JsonSerializer.Serialize(carrinho));
+        Save(carrinho);
+
+        return RedirectToAction("Index");
+    }
+
+    public ActionResult UpdateQuantidade(int id, [FromQuery]string operacao) 
+    {
+        var carrinho = Load();     
+        
+        if(carrinho.ContainsKey(id))
+        {
+            if(operacao == "incrementar")
+            {
+                carrinho[id].Quantidade++;
+            }
+            else if(operacao == "decrementar") 
+            {
+                carrinho[id].Quantidade--;
+
+                if(carrinho[id].Quantidade == 0)
+                    carrinho.Remove(id);
+            }
+        }     
+
+        Save(carrinho);
+
+        return RedirectToAction("Index");
+    }
+
+    public ActionResult Delete(int id) 
+    {
+        var carrinho = Load();     
+        
+        if(carrinho.ContainsKey(id))
+        {
+            carrinho.Remove(id);
+        }     
+
+        Save(carrinho);
+
+        if(carrinho.Keys.Count == 0) {
+            return RedirectToAction("Index", "Produto");
+        }
 
         return RedirectToAction("Index");
     }

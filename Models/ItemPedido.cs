@@ -9,4 +9,7 @@ public class ItemPedido
     public Pedido Pedido { get; set; }
     public decimal Preco { get; set; }
     public int Quantidade { get; set; }
+    
+    [NotMapped]
+    public decimal Total => Preco * Quantidade;
 }
